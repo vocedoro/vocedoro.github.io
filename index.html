@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>보체도로 합창단 · Voce d'Oro Chorale</title>
+<meta name="description" content="영통에서 함께 노래할 이웃을 찾아요. 악보를 몰라도, 노래가 처음이어도 괜찮아요. 매주 화요일 저녁 7시, 피아노그라운드음악학원.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="img/logo-mask.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div id="introOverlay" hidden>
+  <video id="introVideo" src="media/intro.mp4" poster="media/intro_poster.jpg" muted playsinline preload="auto"></video>
+  <button id="introSkip" type="button">건너뛰기 ›</button>
+</div>
+<script>
+(() => {
+  const o = document.getElementById('introOverlay'), v = document.getElementById('introVideo');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || sessionStorage.getItem('vdIntroSeen')) return;          // once per visit
+  sessionStorage.setItem('vdIntroSeen', '1');
+  o.hidden = false; document.documentElement.style.overflow = 'hidden';
+  const close = () => { if (o.classList.contains('out')) return; o.classList.add('out');
+    document.documentElement.style.overflow = ''; setTimeout(() => o.remove(), 900); };
+  v.addEventListener('ended', () => setTimeout(close, 600));
+  v.addEventListener('error', close);
+  document.getElementById('introSkip').onclick = close;
+  addEventListener('keydown', e => { if (e.key === 'Escape') close(); }, { once: true });
+  v.play().catch(close);                                                   // autoplay blocked -> straight to site
+  setTimeout(close, 11000);                                                // safety net
+})();
+</script>
+<header class="top">
+  <div class="c top-row">
+    <a class="brand" href="#top" aria-label="보체도로 합창단 처음으로">
+      <span class="mark-wrap"><i class="gold-mark edge"></i><i class="gold-mark metal"></i></span>
+      <span><b>보체도로 합창단</b><small>VOCE D'ORO CHORALE</small></span>
+    </a>
+    <div class="util">
+      <a href="library.html">단원 자료실</a>
+      <a class="join" href="#join">단원 모집</a>
+    </div>
+  </div>
+</header>
+
+<div class="menu-bar" id="menuBar">
+  <div class="c">
+    <button class="burger" aria-expanded="false" aria-controls="gnb" onclick="const m=document.getElementById('menuBar');const o=m.classList.toggle('open');this.setAttribute('aria-expanded',o)"><i></i>전체 메뉴</button>
+    <ul class="gnb" id="gnb">
+      <li><a href="about.html#about">합창단 소개</a>
+        <ul><li><a href="about.html#about">소개</a></li><li><a href="about.html#parts">단원 소개</a></li><li><a href="about.html#ci">로고 안내</a></li></ul></li>
+      <li><a href="#shows">공연정보</a>
+        <ul><li><a href="#shows">공연 안내</a></li><li><a href="#shows">공연 일정</a></li></ul></li>
+      <li>
+        <ul><li><a href="#videos">영상</a></li></ul></li>
+      <li><a href="#notice">커뮤니티</a>
+        <ul><li><a href="#notice">공지사항</a></li><li><a href="library.html">연습 자료실</a></li></ul></li>
+      <li><a href="#join">단원 모집</a>
+        <ul><li><a href="#join">모집 안내</a></li><li><a href="#join">가입 문의</a></li></ul></li>
+    </ul>
+  </div>
+</div>
+
+<main id="top">
+  <!-- hero slider -->
+  <section class="hero" aria-roledescription="carousel" aria-label="메인 배너">
+    <canvas id="waves" aria-hidden="true"></canvas>
+    <div class="slides">
+      <div class="slide on" aria-label="1 / 3">
+        <div class="logo-wrap" role="img" aria-label="VOCE D'ORO CHORALE 로고"><i class="gold-logo edge"></i><i class="gold-logo metal"></i><i class="gold-logo sheen"></i></div>
+        <p class="logo-sub">CHORALE</p>
+        <h1 class="s-title">보체도로 합창단</h1>
+        <p class="s-sub">함께 노래할 이웃을 찾아요.</p>
+        <div class="s-cta"><a class="pill pill-fill" href="#join">가입 문의하기</a><a class="pill pill-line" href="about.html#about">합창단 소개 ›</a></div>
+      </div>
+      <div class="slide" aria-label="2 / 3">
+        <p class="s-kick">Founding Members</p>
+        <h2 class="s-title">창단 멤버<br><em>20명</em>을 모집합니다</h2>
+        <p class="s-sub">매주 화요일 저녁 7시 · 피아노그라운드음악학원(영통)</p>
+        <div class="s-cta"><a class="pill pill-fill" href="#join">모집 안내 보기</a></div>
+      </div>
+      <div class="slide" aria-label="3 / 3">
+        <p class="s-kick">Voce d'Oro, golden voice</p>
+        <h2 class="s-title">악보를 몰라도,<br>노래가 처음이어도.</h2>
+        <p class="s-sub">발성부터 차근차근, 누구에게나 있는 황금 목소리를 찾아요.</p>
+        <div class="s-cta"><a class="pill pill-line" href="about.html#about">합창단 소개 ›</a></div>
+      </div>
+    </div>
+    <button class="arrow prev" aria-label="이전 배너"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button class="arrow next" aria-label="다음 배너"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+    <div class="s-nav"><button class="dot on" aria-label="배너 1"></button><button class="dot" aria-label="배너 2"></button><button class="dot" aria-label="배너 3"></button></div>
+  </section>
+
+  <!-- quick info strip -->
+  <section class="strip" id="info" aria-label="연습 안내 요약">
+    <div class="c">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><small>연습 시간</small><b>매주 화요일 저녁 7시</b></span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><small>연습 장소</small><b>피아노그라운드음악학원</b></span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span><small>운영비 (장소·악보·지도 포함)</small><b>월 10만 원</b></span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c.6-3.4 3-5.4 6-5.4s5.4 2 6 5.4"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.6c2.5.2 4.4 2 5 5"/></svg><span><small>모집 인원</small><b>창단 멤버 20명</b></span></div>
+    </div>
+  </section>
+
+  <!-- notices -->
+  <section class="sec" id="notice">
+    <div class="c">
+      <div class="sec-h"><h2>공지사항</h2><span class="chev"></span></div>
+      <div class="notices">
+        <a class="notice" href="#join"><div class="meta"><span class="tag">모집</span><span>2026-10</span></div><h3>보체도로 합창단 창단 멤버 20명 모집</h3><p>악보를 몰라도, 노래가 처음이어도 괜찮아요. 함께 노래할 이웃을 찾습니다.</p><span class="go">자세히 ›</span></a>
+        <a class="notice" href="#info"><div class="meta"><span class="tag">안내</span><span>2026-10</span></div><h3>정기 연습: 매주 화요일 저녁 7시</h3><p>피아노그라운드음악학원(영통)에서 연습해요. 운영비는 월 10만 원이고 장소·악보·지도가 포함돼요.</p><span class="go">자세히 ›</span></a>
+        <a class="notice" href="library.html"><div class="meta"><span class="tag">자료</span><span>준비 중</span></div><h3>연습곡 악보 · 파트별 음원 안내</h3><p>첫 시즌 연습곡이 정해지면 자료실에 악보와 파트별 연습 음원을 올려 드려요.</p><span class="go">자세히 ›</span></a>
+      </div>
+      <div class="more"><a class="pill pill-dark" href="#notice">전체보기</a></div>
+    </div>
+  </section>
+
+  <!-- performances -->
+  <section class="sec alt" id="shows">
+    <div class="c">
+      <div class="sec-h"><h2>공연안내</h2><span class="chev"></span></div>
+      <div class="shows">
+        <a class="show" href="#join"><img src="img/poster_card.jpg" alt="보체도로 합창단 창단 멤버 모집 포스터"><div class="cap"><small>모집</small><b>창단 멤버 모집</b><span>매주 화요일 저녁 7시 · 영통</span></div></a>
+        <div class="show ph"><div class="inner"><span class="latin">Debut Concert</span><b>첫 정기연주회</b><span>일정이 정해지면 알려 드릴게요</span></div></div>
+        <div class="show ph"><div class="inner"><span class="latin">Community Stage</span><b>찾아가는 작은 음악회</b><span>준비 중</span></div></div>
+      </div>
+      <div class="more"><a class="pill pill-dark" href="#shows">전체보기</a></div>
+    </div>
+  </section>
+
+  <!-- photos -->
+
+  <!-- videos -->
+  <section class="sec alt" id="videos">
+    <div class="c">
+      <div class="sec-h"><h2>영상</h2><span class="chev"></span><p>합창 연습 전에 보면 좋은 발성 영상이에요. 지휘자의 벨칸토 발성 채널에서 골랐어요.</p></div>
+      <div class="videos yt-grid">
+        <a class="ytc main" href="https://www.youtube.com/watch?v=jzkFUsJxQ_s" target="_blank" rel="noopener" data-yt="jzkFUsJxQ_s" data-kind="long"><img src="img/yt/jzkFUsJxQ_s.jpg" alt=""><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg></span><span class="ytt">벨칸토 발성공식 EP.1 · 소리를 앞으로 보내는 마스께라 3단계</span></a>
+        <div class="shorts">
+          <a class="ytc sh" href="https://www.youtube.com/shorts/83BHlHe0kf8" target="_blank" rel="noopener" data-yt="83BHlHe0kf8" data-kind="short"><img src="img/yt/83BHlHe0kf8_v.jpg" alt=""><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg></span><span class="ytt">소리에 바람이 섞인다면? 손바닥 테스트</span></a>
+          <a class="ytc sh" href="https://www.youtube.com/shorts/Ho_szqJOPms" target="_blank" rel="noopener" data-yt="Ho_szqJOPms" data-kind="short"><img src="img/yt/Ho_szqJOPms_v.jpg" alt=""><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg></span><span class="ytt">공명 위치 바로 찾는 법</span></a>
+        </div>
+      </div>
+      <p class="yt-note">영상 속 성악가는 발성 동작을 보여주기 위해 AI로 그린 그림이에요. 합창단 연습 · 공연 영상은 첫 연습 뒤부터 이곳에 올라와요.</p>
+      <div class="more"><a class="pill pill-dark ytbtn" href="https://www.youtube.com/@SuperBass_SONG" target="_blank" rel="noopener"><svg class="yt" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#ff0033"/><path d="M11 6v8l7-4z" fill="#fff"/></svg>벨칸토 발성 채널 바로가기</a></div>
+    </div>
+  </section>
+
+  <!-- membership / join band -->
+  <section class="band hall" id="join">
+    <div class="c">
+      <span class="latin">VOCE D'ORO CHORALE</span>
+      <h2>보체도로 합창단은 바로 여러분 곁에 있습니다</h2>
+      <p>전화, 문자, 당근 채팅 모두 편하게 연락 주세요.</p>
+      <a class="phone" href="tel:01081790880">010-8179-0880</a>
+      <div class="s-cta"><a class="pill pill-fill" href="tel:01081790880">전화로 가입 문의</a><a class="pill pill-line" href="sms:01081790880">문자 보내기</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="c">
+    <span class="mark-wrap"><i class="gold-mark edge"></i><i class="gold-mark metal"></i></span>
+    <div>
+      <b>보체도로 합창단</b>
+      <address>연습 장소 피아노그라운드음악학원(수원 영통)<br>정기 연습 매주 화요일 저녁 7시 · 문의 010-8179-0880</address>
+      <p class="copy">COPYRIGHT © VOCE D'ORO CHORALE. ALL RIGHTS RESERVED.</p>
+    </div>
+    <nav aria-label="바닥 메뉴"><a href="about.html#about">합창단 소개</a><a href="#shows">공연정보</a><a href="#notice">공지사항</a><a href="#join">단원 모집</a><a href="https://www.youtube.com/@SuperBass_SONG" target="_blank" rel="noopener">유튜브 · 벨칸토 발성 채널</a></nav>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const slides=[...document.querySelectorAll('.slide')], dots=[...document.querySelectorAll('.dot')];
+  let i=0, timer;
+  const go=n=>{ slides[i].classList.remove('on'); dots[i].classList.remove('on'); i=(n+slides.length)%slides.length; slides[i].classList.add('on'); dots[i].classList.add('on'); };
+  const auto=()=>{ clearInterval(timer); if(!matchMedia('(prefers-reduced-motion: reduce)').matches) timer=setInterval(()=>go(i+1),6500); };
+  document.querySelector('.prev').onclick=()=>{go(i-1);auto()};
+  document.querySelector('.next').onclick=()=>{go(i+1);auto()};
+  dots.forEach((d,k)=>d.onclick=()=>{go(k);auto()});
+  auto();
+})();
+</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+const canvas = document.getElementById('waves');
+const hero = canvas.parentElement;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer;
+try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' }); }
+catch (e) { canvas.remove(); throw e; }
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
+
+// a field of gold particles on a plane, displaced into rolling waves in the vertex shader
+const small = innerWidth < 800;
+const NX = small ? 150 : 280, NZ = small ? 90 : 150, W = 64, D = 52;
+const pos = new Float32Array(NX * NZ * 3);
+for (let j = 0, k = 0; j < NZ; j++) for (let i = 0; i < NX; i++) {
+  pos[k++] = (i / (NX - 1) - 0.5) * W; pos[k++] = 0; pos[k++] = 8 - (j / (NZ - 1)) * D;
+}
+const geo = new THREE.BufferGeometry();
+geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+const mat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  uniforms: { uTime: { value: 0 }, uPx: { value: renderer.getPixelRatio() } },
+  vertexShader: `
+    uniform float uTime; uniform float uPx; varying float vH; varying float vFade;
+    void main(){
+      vec3 p = position; float t = uTime * 0.42;
+      float h = sin(p.x*0.17 + t)*0.95 + sin(p.z*0.21 + t*1.25)*0.75
+              + sin((p.x+p.z)*0.11 - t*0.8)*0.65 + sin(length(p.xz)*0.33 - t*1.6)*0.22;
+      p.y = h - 1.8; vH = h;
+      vec4 mv = modelViewMatrix * vec4(p, 1.0);
+      gl_Position = projectionMatrix * mv;
+      float dist = -mv.z;
+      vFade = smoothstep(58.0, 10.0, dist) * smoothstep(0.5, 5.0, dist) * smoothstep(32.0, 18.0, abs(position.x));
+      gl_PointSize = uPx * (2.8 + max(h, 0.0) * 1.1) * (16.0 / dist);
+    }`,
+  fragmentShader: `
+    varying float vH; varying float vFade;
+    void main(){
+      float d = length(gl_PointCoord - 0.5); if (d > 0.5) discard;
+      float a = smoothstep(0.5, 0.0, d);
+      vec3 deep = vec3(0.50, 0.32, 0.08), gold = vec3(0.92, 0.72, 0.34), pale = vec3(1.0, 0.94, 0.76);
+      float k = clamp((vH + 2.4) / 4.8, 0.0, 1.0);
+      vec3 col = mix(deep, gold, k); col = mix(col, pale, smoothstep(0.78, 1.0, k));
+      gl_FragColor = vec4(col * 1.25, min(1.0, a * vFade * (0.55 + 1.1 * k)));
+    }`
+});
+scene.add(new THREE.Points(geo, mat));
+
+let mx = 0, my = 0;
+addEventListener('pointermove', e => { mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5; }, { passive: true });
+function resize(){
+  const w = hero.clientWidth, h = hero.clientHeight;
+  renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize); resize();
+
+let visible = true;
+new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(hero);
+const clock = new THREE.Clock();
+let cx = 0, cy = 0;
+function frame(){
+  const t = clock.getElapsedTime();
+  mat.uniforms.uTime.value = t;
+  cx += (mx * 2.2 - cx) * 0.04; cy += (-my * 1.2 - cy) * 0.04;
+  camera.position.set(Math.sin(t * 0.08) * 1.2 + cx, 3.4 + cy, 12);
+  camera.lookAt(0, -1.2, -12);
+  renderer.render(scene, camera);
+}
+if (reduce) { mat.uniforms.uTime.value = 6; frame(); }
+else renderer.setAnimationLoop(() => { if (visible) frame(); });
+</script>
+<script>
+// YouTube cards: on http(s) play inline; on file:// (local preview) YouTube refuses embeds, so the link opens YouTube instead
+document.querySelectorAll('.ytc').forEach(a => a.addEventListener('click', e => {
+  if (!location.protocol.startsWith('http')) return;
+  e.preventDefault();
+  const f = document.createElement('iframe');
+  f.src = `https://www.youtube-nocookie.com/embed/${a.dataset.yt}?autoplay=1&rel=0`;
+  f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true; f.title = a.querySelector('.ytt').textContent;
+  const box = document.createElement('div'); box.className = a.className + ' playing';
+  box.appendChild(f); a.replaceWith(box);
+}));
+</script>
+</body>
+</html>
