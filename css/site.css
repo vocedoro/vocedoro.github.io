@@ -282,3 +282,5 @@
   .name-txt p{font-size:16px;line-height:1.8;color:var(--ink-80);margin-top:8px}
   .name-txt p.small{font-size:14px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
   @media (max-width:900px){.namecard{grid-template-columns:1fr;gap:24px}.name-txt h3{font-size:32px}}
+  .namecard .box.glow{background:radial-gradient(ellipse at 50% 50%,rgba(255,244,214,.9),rgba(255,255,255,0) 70%);aspect-ratio:4/3}
+  .namecard .box.glow .logo-wrap{width:86%;filter:drop-shadow(0 6px 18px rgba(0,0,0,.35)) drop-shadow(0 0 38px rgba(240,200,110,.38))}
