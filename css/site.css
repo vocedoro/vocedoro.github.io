@@ -273,3 +273,12 @@
   .ph.mono{aspect-ratio:4/5;border-radius:10px;background:radial-gradient(ellipse at 50% 35%,#2a2216,#0b0906);display:grid;place-items:center}
   .ph.mono .mark-wrap{position:relative;width:46%;aspect-ratio:280/241}
   @media (max-width:900px){.people.bios .person{grid-template-columns:1fr}.people.bios .person .ph{max-width:260px}}
+  .namecard{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center;max-width:960px;margin:0 auto}
+  .namecard .box{border-radius:14px;background:#000;display:grid;place-items:center;aspect-ratio:4/3}
+  .namecard .box .logo-wrap{width:62%;margin:0;filter:none}
+  .name-txt .it{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:26px;color:var(--gold-text)}
+  .name-txt .it span{font-family:inherit;font-style:normal;font-size:16px;color:var(--ink-80);margin-left:6px}
+  .name-txt h3{font-size:40px;letter-spacing:-.02em;margin:4px 0 16px}
+  .name-txt p{font-size:16px;line-height:1.8;color:var(--ink-80);margin-top:8px}
+  .name-txt p.small{font-size:14px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+  @media (max-width:900px){.namecard{grid-template-columns:1fr;gap:24px}.name-txt h3{font-size:32px}}
